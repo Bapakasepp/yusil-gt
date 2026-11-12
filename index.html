@@ -19,9 +19,9 @@
   .nav button{display:block;width:100%;text-align:left;padding:16px;font-weight:800;border:0;background:none;border-radius:12px;cursor:pointer;font-size:16px;min-height:52px;touch-action:manipulation}
   .nav button:active{background:var(--yellow)}
   /* DECK */
-  .deck{flex:1;display:flex;transition:transform .45s cubic-bezier(.22,1,.36,1);will-change:transform;cursor:grab;touch-action:pan-y}
+  .deck{flex:1;min-height:0;display:flex;transition:transform .5s cubic-bezier(.3,1.25,.4,1);will-change:transform;cursor:grab;touch-action:pan-y}
   .deck.dragging{transition:none;cursor:grabbing}
-  .slide{flex:0 0 100%;height:100%;padding:88px 18px 84px;position:relative;overflow:hidden;display:flex;flex-direction:column}
+  .slide{flex:0 0 100%;height:100%;min-height:0;padding:88px 18px 84px;position:relative;overflow:hidden;display:flex;flex-direction:column}
   .slide--yellow{background:linear-gradient(165deg,#CDEFFF 0%,#EAF9FF 50%,#FFF1CF 100%)}
   .slide--red{background:linear-gradient(165deg,#FFF1CF 0%,#FFF8E7 50%,#D9F2FF 100%);color:var(--ink)}
   .slide-inner{width:100%;max-width:1100px;margin:0 auto;display:flex;flex-direction:column;height:100%;justify-content:center;gap:6px;min-height:0}
@@ -94,13 +94,13 @@
   .note-btns{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
   .note-btns .btn{width:auto;flex:1;min-width:160px;margin-top:0}
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;max-width:720px}
-  .profile-card{display:flex;align-items:center;gap:12px;background:#fff;border:3px solid var(--ink);border-radius:18px;padding:12px;box-shadow:4px 4px 0 var(--ink);margin-top:14px;max-width:520px;width:100%}
-  .profile-avatar{width:64px;height:auto;image-rendering:pixelated;border:3px solid var(--ink);border-radius:14px;background:var(--cream);padding:4px;flex:0 0 auto}
-  .profile-info b{font-size:18px;display:block}
-  .profile-info>span{font-size:13px;opacity:.75}
+  .profile-card{display:flex;align-items:center;gap:12px;background:#fff;border:3px solid var(--ink);border-radius:18px;padding:10px;box-shadow:4px 4px 0 var(--ink);margin-top:12px;max-width:520px;width:100%}
+  .profile-avatar{width:52px;height:auto;image-rendering:pixelated;border:3px solid var(--ink);border-radius:14px;background:var(--cream);padding:4px;flex:0 0 auto}
+  .profile-info b{font-size:17px;display:block}
+  .profile-info>span{font-size:12px;opacity:.75}
   .verified{display:inline-grid;place-items:center;width:20px;height:20px;background:#2e9e4f;color:#fff;border-radius:50%;font-size:12px;vertical-align:middle}
-  .trust-list{display:grid;gap:8px;margin-top:12px;max-width:520px;width:100%}
-  .trust-item{background:#fff;border:3px solid var(--ink);border-radius:14px;padding:10px 12px;box-shadow:3px 3px 0 var(--ink);font-weight:700;font-size:13px}
+  .trust-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;max-width:520px;width:100%}
+  .trust-item{background:#fff;border:3px solid var(--ink);border-radius:14px;padding:8px 10px;box-shadow:3px 3px 0 var(--ink);font-weight:700;font-size:12px;line-height:1.35}
   .warn-box{background:#fff3cd;border:3px solid var(--ink);border-radius:14px;padding:10px 12px;margin-top:12px;font-size:13px;line-height:1.45;box-shadow:3px 3px 0 var(--ink);max-width:520px;width:100%}
   .contact-card{background:#fff;border:3px solid #1F3A5F;border-radius:20px;padding:14px;box-shadow:5px 5px 0 #1F3A5F;color:#1F3A5F}
   .contact-card h3{font-size:16px;font-weight:900}
@@ -133,6 +133,28 @@
     .burst{bottom:110px;font-size:14px;padding:12px 8px}
     .slide--compact .step-pill{padding:8px 12px 8px 8px;font-size:13px}
     .slide--compact .step-num{width:26px;height:26px;font-size:13px}
+    .profile-avatar{width:44px}
+    .trust-item{font-size:11px;padding:7px 8px}
+    .warn-box{font-size:12px;padding:8px 10px}
+    .contact-card{padding:10px}
+    .contact-val{font-size:15px}
+    .slide{padding-top:76px;padding-bottom:72px}
+    .slide--profile .slide-inner{gap:3px}
+    .slide--profile .profile-card{padding:5px}
+    .slide--profile .profile-avatar{width:32px}
+    .slide--profile .trust-list{gap:5px}
+    .slide--profile .trust-item{font-size:10.5px;padding:4px 6px}
+    .slide--profile .warn-box{font-size:10.5px;padding:5px 8px}
+    .slide--profile .contact-card{padding:5px}
+    .slide--profile .contact-val{font-size:12px}
+    .slide--profile .contact-card .btn{padding:7px 10px;font-size:12px}
+    .slide--profile .h2{font-size:clamp(22px,5.5vw,34px)}
+    .slide--profile .kicker{margin-bottom:6px}
+    .slide--profile .profile-card{margin-top:8px}
+    .slide--profile .contact-card h3{font-size:14px}
+    .slide--profile .contact-val{margin:4px 0 6px}
+    .slide--profile .contact-grid{gap:8px}
+    .gt-char{width:100px;bottom:14%}
   }
   @media (min-width:768px){
     .slide{padding:104px 40px 100px}
@@ -280,7 +302,6 @@
   .loader-gems img.on{opacity:1;transform:scale(1)}
 
   /* SLIDE MOTION: entrance choreography + living background */
-  .deck{transition:transform .5s cubic-bezier(.3,1.25,.4,1)}
   @keyframes fadeUp{from{opacity:0;transform:translateY(26px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
   @keyframes popIn{from{opacity:0;transform:scale(.6)}60%{opacity:1;transform:scale(1.07)}to{opacity:1;transform:scale(1)}}
   @keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
@@ -442,7 +463,7 @@
 
 
     <!-- SLIDE 5: PROFIL PENJUAL -->
-    <section class="slide slide--red">
+    <section class="slide slide--red slide--profile">
       <img class="float-item fi-1" src="data:image/png;base64,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" alt="Blue Gem Lock" data-wiki="BGL">
       <img class="float-item fi-2" src="data:image/png;base64,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" alt="World Lock">
       <img class="float-item fi-4" src="data:image/png;base64,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" alt="Transmog Crystal">
@@ -462,7 +483,7 @@
           <div class="trust-item">✅ Fast respon — admin online setiap hari</div>
           <div class="trust-item">✅ Sudah banyak transaksi berhasil</div>
         </div>
-        <div class="warn-box">⚠️ <b>Waspada penipuan!</b> Jangan transfer ke nomor atau rekening selain yang tertera di web ini.</div>
+        <div class="warn-box">⚠️ <b>Waspada penipuan!</b> Transfer hanya lewat web ini.</div>
         <div class="contact-grid">
           <div class="contact-card">
             <h3>Instagram</h3>
@@ -475,7 +496,7 @@
             <a class="btn btn--wa" href="https://wa.me/6281915553065?text=Halo%20YUSIL%20GT%2C%20saya%20mau%20order%20lock." target="_blank" rel="noopener">Chat WA</a>
           </div>
         </div>
-        <p style="margin-top:14px;font-weight:900;text-align:center">YUSIL GT — Your Trusted Growtopia Partner</p>
+        <p style="margin-top:10px;font-weight:900;text-align:center;font-size:13px">YUSIL GT — Trusted Growtopia Partner</p>
       </div>
     </section>
 
